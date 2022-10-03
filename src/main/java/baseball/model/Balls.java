@@ -11,9 +11,7 @@ public class Balls {
         if (isNotValidSize(answers)) {
             throw new IllegalArgumentException();
         }
-        if (isDuplicateNumbers(answers)) {
-            throw new IllegalArgumentException();
-        }
+
         balls = mapToBall(answers);
     }
 
@@ -29,16 +27,33 @@ public class Balls {
         balls = mapToBall(answers);
     }
 
-    private static List<Ball> mapToBall(String answers) {
+    private List<Ball> mapToBall(String answers) {
         List<Ball> balls = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             balls.add(new Ball(i + 1, Character.getNumericValue(answers.charAt(i))));
         }
+        if (isDuplicateNumbers(balls)) {
+            throw new IllegalArgumentException();
+        }
         return balls;
     }
 
-    private boolean isDuplicateNumbers(List<Integer> answers) {
-        HashSet<Integer> result = new HashSet<>(answers);
+    private List<Ball> mapToBall(List<Integer> answers) {
+        List<Ball> balls = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            balls.add(new Ball(i + 1, answers.get(i)));
+        }
+        if (isDuplicateNumbers(balls)) {
+            throw new IllegalArgumentException();
+        }
+        return balls;
+    }
+
+    private boolean isDuplicateNumbers(List<Ball> answers) {
+        HashSet<BallNumber> result = new HashSet<>();
+        for (Ball ball : answers) {
+            result.add(ball.getBallNum());
+        }
         return result.size() < 3;
     }
 
@@ -53,14 +68,6 @@ public class Balls {
         } catch (NumberFormatException e) {
             return true;
         }
-    }
-
-    private static List<Ball> mapToBall(List<Integer> answers) {
-        List<Ball> balls = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            balls.add(new Ball(i + 1, answers.get(i)));
-        }
-        return balls;
     }
 
     private boolean isNotValidSize(String answers) {

@@ -36,6 +36,14 @@ public class BallsTest {
                 .isThrownBy(() -> new Balls(Arrays.asList(4, 7, 3, 5)));
     }
 
+    @DisplayName("입력된_문자열이_중복되는_값이_있으면_에러_반환")
+    @ParameterizedTest
+    @CsvSource(value = {"111", "131", "112"}, delimiter = ':')
+    void 입력된_문자열이_중복되는_값이_있으면_에러_반환(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Balls(input));
+    }
+
     @DisplayName("입력된_문자열이_3자리가_넘으면_에러_반환")
     @ParameterizedTest
     @CsvSource(value = {"000000", "1000000"}, delimiter = ':')

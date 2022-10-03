@@ -26,6 +26,10 @@ public class Ball {
         return this.ballNum.equals(ballNum);
     }
 
+    public BallNumber getBallNum() {
+        return ballNum;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
