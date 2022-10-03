@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.message.ErrorMessage;
 import java.util.Objects;
 
 public class BallNumber {
@@ -10,7 +11,7 @@ public class BallNumber {
 
     public BallNumber(int num) {
         if (num < MIN_NUM || num > MAX_NUM) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER);
         }
         this.num = num;
     }

@@ -1,5 +1,7 @@
 package baseball.validator;
 
+import baseball.message.ErrorMessage;
+
 public class InputFinishValidator {
 
     int restart;
@@ -17,11 +19,11 @@ public class InputFinishValidator {
     public boolean isInputValidate(String checkString) {
 
         if (isOutOfSize(checkString)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ERROR_OUT_OF_SIZE);
         }
 
         if (isNotNumber(checkString)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER);
         }
 
         return true;
