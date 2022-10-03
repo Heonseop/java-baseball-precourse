@@ -8,4 +8,9 @@ public class InputView {
         System.out.println(InputMessage.INPUT_NUMBERS_MESSAGE);
         return Console.readLine();
     }
+
+    public static String inputRestartOrFinish() {
+        System.out.println(InputMessage.INPUT_REQUEST_RESTART_MESSAGE);
+        return Console.readLine();
+    }
 }
