@@ -18,6 +18,16 @@ public class Balls {
         return balls;
     }
 
+    public PlayResult play(List<Integer> userNums){
+        Balls userBalls = new Balls(userNums);
+        PlayResult result = new PlayResult();
+        for(Ball answer: balls){
+            BallStatus status = userBalls.play(answer);
+            result.setResult(status);
+        }
+        return result;
+    }
+
     public BallStatus play(Ball userBall) {
         // TODO : depth 1로 변경
         for (Ball ball : balls) {
