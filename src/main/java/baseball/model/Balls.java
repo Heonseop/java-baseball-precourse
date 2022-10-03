@@ -84,13 +84,12 @@ public class Balls {
     }
 
     public BallStatus play(Ball userBall) {
-        // TODO : depth 1로 변경
-        for (Ball ball : balls) {
-            BallStatus checkBall = ball.play(userBall);
-            if (checkBall.isNotNothing()) {
-                return checkBall;
-            }
+        int count = 0;
+        BallStatus result = BallStatus.NOTHING;
+        while (count < 3 && result.isNothing()) {
+            result = balls.get(count).play(userBall);
+            count++;
         }
-        return BallStatus.NOTHING;
+        return result;
     }
 }
