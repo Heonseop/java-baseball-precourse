@@ -1,9 +1,11 @@
 package baseball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BallsTest {
@@ -12,6 +14,20 @@ public class BallsTest {
     @BeforeEach
     void setUp() {
         answers = new Balls(Arrays.asList(4, 7, 6));
+    }
+
+    @DisplayName("중복되는_숫자가_있으면_에러_반환")
+    @Test
+    void 중복되는_숫자가_있으면_에러_반환() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Balls(Arrays.asList(4, 7, 4)));
+    }
+
+    @DisplayName("입력값이_3자리가_넘으면_에러_반환")
+    @Test
+    void 입력값이_3자리가_넘으면_에러_반환() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Balls(Arrays.asList(4, 7, 3, 5)));
     }
 
     @Test

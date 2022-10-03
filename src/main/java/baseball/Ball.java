@@ -23,7 +23,7 @@ public class Ball {
     }
 
     private boolean isEqualBallNum(BallNumber ballNum) {
-        return this.ballNum == ballNum;
+        return this.ballNum.equals(ballNum);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class Ball {
             return false;
         }
         Ball ball = (Ball) o;
-        return position == ball.position && ballNum == ball.ballNum;
+        return position == ball.position && Objects.equals(ballNum, ball.ballNum);
     }
 
     @Override
