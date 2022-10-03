@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class Ball {
     private final int position;
-    private final int ballNum;
+    private final BallNumber ballNum;
 
     public Ball(int position, int ballNum) {
         this.position = position;
-        this.ballNum = ballNum;
+        this.ballNum = new BallNumber(ballNum);
     }
 
     public BallStatus play(Ball ball) {
@@ -22,7 +22,7 @@ public class Ball {
         return BallStatus.NOTHING;
     }
 
-    private boolean isEqualBallNum(int ballNum) {
+    private boolean isEqualBallNum(BallNumber ballNum) {
         return this.ballNum == ballNum;
     }
 

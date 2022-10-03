@@ -11,17 +11,17 @@ public class Balls {
     }
 
     private static List<Ball> mapToBall(List<Integer> answers) {
-        List<baseball.Ball> balls = new ArrayList<>();
+        List<Ball> balls = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            balls.add(new baseball.Ball(i + 1, answers.get(i)));
+            balls.add(new Ball(i + 1, answers.get(i)));
         }
         return balls;
     }
 
-    public PlayResult play(List<Integer> userNums){
+    public PlayResult play(List<Integer> userNums) {
         Balls userBalls = new Balls(userNums);
         PlayResult result = new PlayResult();
-        for(Ball answer: balls){
+        for (Ball answer : balls) {
             BallStatus status = userBalls.play(answer);
             result.setResult(status);
         }
