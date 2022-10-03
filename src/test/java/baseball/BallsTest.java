@@ -3,6 +3,10 @@ package baseball;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
+import baseball.model.Ball;
+import baseball.model.BallStatus;
+import baseball.model.Balls;
+import baseball.model.PlayResult;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
