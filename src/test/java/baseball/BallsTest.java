@@ -11,6 +11,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class BallsTest {
     private Balls answers;
@@ -32,6 +34,22 @@ public class BallsTest {
     void 입력값이_3자리가_넘으면_에러_반환() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Balls(Arrays.asList(4, 7, 3, 5)));
+    }
+
+    @DisplayName("입력된_문자열이_3자리가_넘으면_에러_반환")
+    @ParameterizedTest
+    @CsvSource(value = {"000000", "1000000"}, delimiter = ':')
+    void 입력된_문자열이_3자리가_넘으면_에러_반환(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Balls(input));
+    }
+
+    @DisplayName("입력된_문자열이_숫자변환이_안되면_에러_반환")
+    @ParameterizedTest
+    @CsvSource(value = {"abc", "1aa", "12A", "1a1"}, delimiter = ':')
+    void 입력된_문자열이_숫자변환이_안되면_에러_반환(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Balls(input));
     }
 
     @Test

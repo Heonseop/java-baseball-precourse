@@ -17,6 +17,26 @@ public class Balls {
         balls = mapToBall(answers);
     }
 
+    public Balls(String answers) {
+        if (isNotValidSize(answers)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (isNotDigit(answers)) {
+            throw new IllegalArgumentException();
+        }
+
+        balls = mapToBall(answers);
+    }
+
+    private static List<Ball> mapToBall(String answers) {
+        List<Ball> balls = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            balls.add(new Ball(i + 1, Character.getNumericValue(answers.charAt(i))));
+        }
+        return balls;
+    }
+
     private boolean isDuplicateNumbers(List<Integer> answers) {
         HashSet<Integer> result = new HashSet<>(answers);
         return result.size() < 3;
@@ -26,12 +46,25 @@ public class Balls {
         return answers.isEmpty() || answers.size() > 3;
     }
 
+    private boolean isNotDigit(String answers) {
+        try {
+            Integer.parseInt(answers);
+            return false;
+        } catch (NumberFormatException e) {
+            return true;
+        }
+    }
+
     private static List<Ball> mapToBall(List<Integer> answers) {
         List<Ball> balls = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             balls.add(new Ball(i + 1, answers.get(i)));
         }
         return balls;
+    }
+
+    private boolean isNotValidSize(String answers) {
+        return answers.isEmpty() || answers.length() > 3;
     }
 
     public PlayResult play(List<Integer> userNums) {
