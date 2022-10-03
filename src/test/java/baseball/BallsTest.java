@@ -54,7 +54,8 @@ public class BallsTest {
 
     @Test
     void play_nothing() {
-        PlayResult result = answers.play(Arrays.asList(9, 1, 2));
+        Balls testBalls = new Balls(Arrays.asList(9, 1, 2));
+        PlayResult result = answers.play(testBalls);
         assertThat(result.getStrike()).isEqualTo(0);
         assertThat(result.getBall()).isEqualTo(0);
         assertThat(result.isEndGame()).isFalse();
@@ -62,7 +63,8 @@ public class BallsTest {
 
     @Test
     void play_one_strike() {
-        PlayResult result = answers.play(Arrays.asList(4, 5, 8));
+        Balls testBalls = new Balls(Arrays.asList(4, 5, 8));
+        PlayResult result = answers.play(testBalls);
         assertThat(result.getStrike()).isEqualTo(1);
         assertThat(result.getBall()).isEqualTo(0);
         assertThat(result.isEndGame()).isFalse();
@@ -70,7 +72,8 @@ public class BallsTest {
 
     @Test
     void play_two_strike() {
-        PlayResult result = answers.play(Arrays.asList(4, 7, 5));
+        Balls testBalls = new Balls(Arrays.asList(4, 7, 5));
+        PlayResult result = answers.play(testBalls);
         assertThat(result.getStrike()).isEqualTo(2);
         assertThat(result.getBall()).isEqualTo(0);
         assertThat(result.isEndGame()).isFalse();
@@ -78,7 +81,8 @@ public class BallsTest {
 
     @Test
     void play_one_strike_one_ball() {
-        PlayResult result = answers.play(Arrays.asList(4, 6, 5));
+        Balls testBalls = new Balls(Arrays.asList(4, 6, 5));
+        PlayResult result = answers.play(testBalls);
         assertThat(result.getStrike()).isEqualTo(1);
         assertThat(result.getBall()).isEqualTo(1);
         assertThat(result.isEndGame()).isFalse();
@@ -86,7 +90,8 @@ public class BallsTest {
 
     @Test
     void play_three_strike() {
-        PlayResult result = answers.play(Arrays.asList(4, 7, 6));
+        Balls testBalls = new Balls(Arrays.asList(4, 7, 6));
+        PlayResult result = answers.play(testBalls);
         assertThat(result.getStrike()).isEqualTo(3);
         assertThat(result.getBall()).isEqualTo(0);
         assertThat(result.isEndGame()).isTrue();
@@ -94,7 +99,8 @@ public class BallsTest {
 
     @Test
     void play_three_ball() {
-        PlayResult result = answers.play(Arrays.asList(6, 4, 7));
+        Balls testBalls = new Balls(Arrays.asList(6, 4, 7));
+        PlayResult result = answers.play(testBalls);
         assertThat(result.getStrike()).isEqualTo(0);
         assertThat(result.getBall()).isEqualTo(3);
         assertThat(result.isEndGame()).isFalse();

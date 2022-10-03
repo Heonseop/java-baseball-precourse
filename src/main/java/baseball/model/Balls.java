@@ -67,8 +67,7 @@ public class Balls {
         return answers.isEmpty() || answers.length() > 3;
     }
 
-    public PlayResult play(List<Integer> userNums) {
-        Balls userBalls = new Balls(userNums);
+    public PlayResult play(Balls userBalls) {
         PlayResult result = new PlayResult();
         for (Ball answer : balls) {
             BallStatus status = userBalls.play(answer);
